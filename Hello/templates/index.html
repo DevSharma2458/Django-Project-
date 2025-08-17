@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<style>
+  /* Carousel header style */
+  .carousel-item img {
+    width: 100%;
+    height: 600px; /* fixed header height */
+    object-fit: cover; /* crop to fit */
+    object-position: center;
+  }
+  .carousel-container {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  /* Album styling */
+  .album-section {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+  }
+  .card img {
+    height: 225px;
+    object-fit: cover;
+  }
+</style>
+
+<!-- Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide carousel-container" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'img/1.jpg' %}" alt="1">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Welcome to the best Ice-Cream Shop in Rawatbhata</h5>
+        <p>Where every scoop is made with love and a smile.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/2.jpg' %}" alt="2">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Indulge in Chocolate Heaven</h5>
+        <p>Rich, creamy, and irresistibly decadent.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/3.jpg' %}" alt="3">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Fresh and Fruity Delight</h5>
+        <p>Experience the burst of fresh fruits in every bite.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/4.jpg' %}" alt="4">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Minty Cool Refreshment</h5>
+        <p>A burst of cool mint with crunchy chocolate chips.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/5.jpg' %}" alt="5">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Berry Cheesecake Bliss</h5>
+        <p>Swirls of cheesecake and juicy berries in every bite.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Album Section -->
+<div class="album-section">
+  <div class="container">
+    <h1 class="text-center mb-4">Select From Our Range of Ice-Creams</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+      {% for i in "123456" %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'img/'|add:i|add:'.jpg' %}" class="card-img-top" alt="Ice Cream {{ i }}">
+          <div class="card-body">
+            <p class="card-text">Delicious ice cream with rich flavors. Perfect treat for any occasion!</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button class="btn btn-sm btn-outline-primary">View</button>
+                <button class="btn btn-sm btn-outline-success">Order</button>
+              </div>
+              <small class="text-muted">Fresh</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock body %}

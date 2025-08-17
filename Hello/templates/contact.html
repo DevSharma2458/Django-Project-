@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Contact Us{% endblock %}
+
+{% block body %}
+<style>
+  /* Carousel header style */
+  .carousel-item img {
+    width: 100%;
+    height: 600px; /* fixed header height */
+    object-fit: cover; /* crop to fit */
+    object-position: center;
+  }
+  .carousel-container {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  /* Album styling (optional for other pages) */
+  .album-section {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+  }
+  .card img {
+    height: 225px;
+    object-fit: cover;
+  }
+
+  /* Contact form styling */
+  .contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+</style>
+
+<!-- Header Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide carousel-container" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'img/ContactUs.jpg' %}" alt="Contact Us Banner">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+        <h5 class="fw-bold">Let’s Connect</h5>
+        <p class="mb-0">
+          We’re here to help and answer any questions you might have.<br>
+          Reach out to us via email, phone, or our contact form.<br>
+          <strong>We’ll respond as quickly as possible.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Form Section -->
+<div class="container my-5 py-4">
+  <h2 class="text-center mb-3">Contact Us</h2>
+  <p class="text-center text-muted mb-5">
+    If you have any questions, suggestions, or just want to say hello, feel free to reach out!
+  </p>
+
+  <form method="post" action="/contact/" class="contact-form">
+    {% csrf_token %}  
+
+    <div class="mb-3">
+      <label for="Name" class="form-label fw-semibold">Name</label>
+      <input type="text" class="form-control" id="Name" name="name" placeholder="Enter Your Name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="Email" class="form-label fw-semibold">Email Address</label>
+      <input type="email" class="form-control" id="Email" name="email" placeholder="Enter Your Email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="Mobile" class="form-label fw-semibold">Mobile Number</label>
+      <input type="tel" class="form-control" id="Mobile" name="mobile" placeholder="Enter Your Mobile Number" pattern="[0-9]{10}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="Message" class="form-label fw-semibold">Your Message</label>
+      <textarea class="form-control" id="Message" rows="4" name="message" placeholder="Enter Your Message" required></textarea>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+    </div>
+  </form>  
+</div>
+{% endblock %}
